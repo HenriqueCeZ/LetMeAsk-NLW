@@ -2,7 +2,8 @@ import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg';
 import googleImg from '../assets/images/googleImg.svg'
 import '../styles/auth.scss'
-export const Home = () =>{
+import  {Button} from '../components/Button'
+export const Home = () =>{  //tela de authentication
 
     return (
             <div id="page-auth">
@@ -23,7 +24,7 @@ export const Home = () =>{
                                         <input type="text"
                                             placeholder="Digite o código da sala"
                                         />
-                                        <button type="submit">entrar na sala</button>
+                                        <Button type="submit">entrar na sala</Button>
 
 
 
