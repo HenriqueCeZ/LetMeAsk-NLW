@@ -3,7 +3,33 @@ import logoImg from '../assets/images/logo.svg';
 import googleImg from '../assets/images/googleImg.svg'
 import '../styles/auth.scss'
 import  {Button} from '../components/Button'
+import {useHistory} from 'react-router-dom';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {useContext} from 'react';
+import {AuthContext} from '../contexts/AuthContext'
+
+
+
+
 export const Home = () =>{  //tela de authentication
+    const history = useHistory();
+    const { user, signInWithGoogle} = useContext(AuthContext);
+
+    
+   
+    function handleCreateRoom(){ //authentication com o google
+        if(!user){
+            signInWithGoogle();
+        }
+
+
+        history.push('/rooms/news'); //enviando o usuário para a rooms apos a authentication
+  }
+
+        
+
+    
+   
 
     return (
             <div id="page-auth">
@@ -15,7 +41,7 @@ export const Home = () =>{  //tela de authentication
                     <main>
                             <div className="main-content">
                                 <img src={logoImg} alt="Letmeask" />
-                                <button className="create-room">
+                                <button onClick={handleCreateRoom} className="create-room">
                                     <img src={googleImg} alt="Logo do Google" />
                                     Crie sua sala com Google
                                 </button>
